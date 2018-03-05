@@ -12,7 +12,7 @@ outputdir = "output/"
 if not os.path.exists(outputdir):
     os.makedirs(outputdir)
 
-limit = 1
+limit = 5
 count = 0
 tempfile = "temp.pdf"
 if os.path.exists(tempfile):
@@ -31,5 +31,3 @@ for file_url in search(google_search_query):#, tld="co.in", num=10, stop=1, paus
     f.close()
 
     os.remove(tempfile)
-
-    break
