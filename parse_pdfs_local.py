@@ -1,5 +1,7 @@
-import os
 import pdf_utils
+
+import os
+import sys
 
 pdf_dir = '/Users/eisner/data/pdfs_coe/'
 
@@ -17,8 +19,9 @@ print("Parsing files ...", end = '')
 for filename in os.listdir(pdf_dir):
     count += 1
 
-    if (count % 500 == 0):
+    if (count % 100) == 0:
         print(str(count) + "...", end = '')
+        sys.stdout.flush()
 
     try:
         found_data = pdf_utils.process_file(pdf_dir + filename, outputdir + str(count) + ".txt", min_chars_in_file)
