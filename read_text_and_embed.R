@@ -1,4 +1,5 @@
 library(coeNLP)
+library(dplyr)
 
 text_file_dir = 'output/'
 
@@ -23,13 +24,17 @@ for (file in files) {
   }
 
   if (length(text_data) > 0) {
-    all_text = append(all_text, text_data)
+    doc_text = paste(text_data, collapse = '. ')
+    all_text = append(all_text, doc_text)
   }
 }
 
-cat("Done. Found", length(all_text), "Sentences.\n")
+cat("Done. Found", length(all_text), "Docs.\n")
 browser()
 
 cat("Training Embedding...")
 model = coeNLP::trainEmbeddings(all_text, vectors = 100, lemmatize = TRUE)
 cat("Done.\n")
+
+# > model = coeNLP::readEmbeddings()
+# > wordVectors::closest_to(model, "bike")
